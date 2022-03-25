@@ -139,6 +139,11 @@ resource "azurerm_virtual_machine" "catapp" {
     department="devops"
     billable= "true"
   }
+  module "network" {
+  source  = "app.terraform.io/dhivi0815/network/azurerm"
+  version = "3.5.0"
+  # insert required variables here
+  }
 
   # Added to allow destroy to work correctly.
   depends_on = [azurerm_network_interface_security_group_association.catapp-nic-sg-ass]
